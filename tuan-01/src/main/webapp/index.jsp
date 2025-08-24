@@ -8,6 +8,11 @@
 <h1><%= "Hello World!" %>
 </h1>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
+<div
+        style="display: flex; gap: 10px"
+>
+    <a href="hello-servlet">Hello Servlet</a>
+    <a href="user">User</a>
+</div>
 </body>
 </html>
