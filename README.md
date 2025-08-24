@@ -1,6 +1,6 @@
 # README
 
-Thư mục này chứa các bài tập (lab) của môn **WWW Java**.
+Repo này chứa các bài tập (lab) của môn **WWW Java**.
 
 ## Nội dung
 
