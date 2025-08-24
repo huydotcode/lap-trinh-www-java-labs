@@ -8,8 +8,21 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+    <servlet>
+        <servlet-name>paramServlet</servlet-name>
+        <servlet-class>iuh.fit.se.tuan01.ParamServlet</servlet-class>
+        <init-param>
+            <param-name>username</param-name>
+            <param-value>ngonhuthuy</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>paramServlet</servlet-name>
+        <url-pattern>/param</url-pattern>
+    </servlet-mapping>
+
     <context-param>
         <param-name>appName</param-name>
-        <param-value>Application Name</param-value>
+        <param-value>Lab tuần 1</param-value>
     </context-param>
 </web-app>
