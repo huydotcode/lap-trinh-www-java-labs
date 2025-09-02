@@ -1,7 +1,9 @@
 package iuh.fit.se.bai04.servlet;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import iuh.fit.se.bai04.dao.UserDAO;
 import iuh.fit.se.bai04.model.User;
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,13 +19,12 @@ import java.io.PrintWriter;
 )
 public class UserServlet extends HttpServlet {
 
+    @Inject
+    private UserDAO userDAO;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = new User();
-        user.setId("USER01");
-        user.setName("Huy");
-        user.setAge(22);
-        user.setEmail("ngohuy@gmail.com");
+        User user = userDAO.getUser();
 
         // Trả về json
         ObjectMapper mapper = new ObjectMapper();
