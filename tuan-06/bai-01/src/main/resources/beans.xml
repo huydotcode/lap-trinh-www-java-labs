@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Inject by setter    -->
+    <!-- Class Bean   -->
+    <bean id="class1" class="iuh.fit.se.bai01.setter_injection.Class">
+        <property name="id" value="1"></property>
+        <property name="name" value="Class1"></property>
+    </bean>
+
+    <!-- Student Bean    -->
+    <bean id="student1" class="iuh.fit.se.bai01.setter_injection.Student">
+        <property name="id" value="1"></property>
+        <property name="name" value="Huy"></property>
+        <property name="clazz" ref="class1"></property>
+    </bean>
+
+    <!-- Inject by constructor    -->
+    <bean id="student2" class="iuh.fit.se.bai01.setter_injection.Student">
+        <constructor-arg name="id" value="2"></constructor-arg>
+        <constructor-arg name="name" value="Huy Thu Hai"></constructor-arg>
+        <constructor-arg name="clazz" ref="class1"></constructor-arg>
+    </bean>
+
+    <!--    Collection Injection -->
+    <bean id="address1" class="iuh.fit.se.bai01.collection_injection.Address">
+        <property name="street" value="Nguyen Van Bao"></property>
+        <property name="city" value="TP HCM"></property>
+        <property name="country" value="Viet Nam"></property>
+    </bean>
+
+    <bean id="address2" class="iuh.fit.se.bai01.collection_injection.Address">
+        <property name="street" value="Nguyen Thai Son"></property>
+        <property name="city" value="TP HCM"></property>
+        <property name="country" value="Viet Nam"></property>
+    </bean>
+
+    <bean id="person1" class="iuh.fit.se.bai01.collection_injection.Person">
+        <property name="name" value="Huy"></property>
+        <property name="age" value="22"></property>
+
+        <property name="addresses">
+            <list>
+                <ref bean="address1"/>
+                <ref bean="address2"/>
+            </list>
+        </property>
+
+        <property name="emails">
+            <list>
+                <value>ngonhuthuy1234@gmail.com</value>
+                <value>ngonhuthuy@gmail.com</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--    Literal Values Injection-->
+    <bean id="classProperties"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+    >
+        <property name="locations">
+            <list>
+                <value>classpath:class.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="class2" class="iuh.fit.se.bai01.setter_injection.Class">
+        <property name="id" value="123"></property>
+        <property name="name" value="${className}"></property>
+    </bean>
+
+    <!--    Auto-wiring -->
+    <bean id="faculty" class="iuh.fit.se.bai01.auto_wiring.Faculty">
+        
+        <property name="id" value="FI"></property>
+        <property name="name" value="Faculty of Information Technology"></property>
+
+    </bean>
+
+    <bean id="dept2" class="iuh.fit.se.bai01.auto_wiring.Department" autowire="no">
+
+        <property name="id" value="DP1"></property>
+        <property name="name" value="Department 1"></property>
+        <property name="faculty" ref="faculty"></property>
+
+    </bean>
+</beans>
